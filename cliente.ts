@@ -1,10 +1,11 @@
+import { Paciente } from "./paciente";
 export class Cliente{
-    private nombre:string;
-    private telefono: number;
+    protected nombre:string;
+    protected telefono: number;
     private id: number;
     private esVIP: boolean;
     private acumulVisitas: number;
-    //atributo mascotas: Paciente[]
+    protected mascotas: Paciente[];
 
     constructor(nombre:string,telefono:number){
         this.nombre= nombre;
@@ -12,6 +13,7 @@ export class Cliente{
         this.id= this.setID();
         this.esVIP= false;
         this.acumulVisitas= 0;
+        this.mascotas= [];
     }
 
     public getNombre():string{
@@ -32,6 +34,10 @@ export class Cliente{
 
     public getAcumulVisitas():number{
         return this.acumulVisitas;    
+    }
+
+    public getListasMascotas():Paciente[]{
+        return this.mascotas;
     }
 
     public setNombre(nombre:string):void{
