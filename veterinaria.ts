@@ -46,22 +46,21 @@ export class Veterinaria {
   }
 
   //METODO PARA MOSTRAR CLIENTES Y SUS MASCOTAS
-  //public getCliente(): void {
-    //this.clientes.forEach((cliente) => {
-     // console.log("Cliente: " , cliente.getNombre());
-     // const pacientes = cliente.get();
-      //pacientes.forEach((paciente) => {
-      //  console.log(
-       //   `  Paciente: ${paciente.getNombre()} - Especie: ${paciente.getEspecie()}`
-       // );
-     // });
-   // });
- // }
+  public getCliente(): void {
+    this.clientes.forEach((cliente) => {
+      console.log("Cliente: " , cliente.getNombre());
+    
+      this.pacientes.forEach((paciente) => {
+        console.log(` Paciente: ${paciente.getNombreMascota()} - Especie: ${paciente.getEspecie()}`);
+      });
+    });
+  }
 
   //METODO PARA BUSCAR CLIENTE POR ID
   public buscarClientePorId(id: number) {
-    return this.clientes.find((clientes) => clientes.getID() === id);
+   return this.clientes.find((clientes) => clientes.getID() === id);
   }
+  
 
   //METODO PARA ELIMINAR CLIENTE
   public bajaCliente(id: number): void {
@@ -94,12 +93,22 @@ export class Veterinaria {
     this.pacientes.push(mascotas);
   }
 
- 
   //METODO PARA ELIMINAR MASCOTA
   public bajaMascota(nomPaciente:string): void{
     this.pacientes = this.pacientes.filter(mascotas => mascotas.getNombreMascota() !== nomPaciente); 
   }
 
+  //METODO PARA MODIFICAR MASCOTA
+    public modificarMascota(nombre:string, nuevaEdad?: number, nuevaEspecie?:string):void{
+      let mascota = this.pacientes.find(
+        (pacientes) => pacientes.getNombreMascota() === nombre);
+      if (mascota) {
+        if (nuevaEdad) mascota.setEdad (nuevaEdad) ;
+        if (nuevaEspecie) mascota.setEspecie(nuevaEspecie);
+        console.log(`Paciente con nombre '${nombre}' modificado`);
+      } else {
+        console.log(`Paciente con nombre '${nombre}}' no encontrado`);
+      }
+    }
 
-  
 }
