@@ -60,7 +60,7 @@ export class Veterinaria {
   public buscarClientePorId(id: number) {
    return this.clientes.find((clientes) => clientes.getID() === id);
   }
-  
+
 
   //METODO PARA ELIMINAR CLIENTE
   public bajaCliente(id: number): void {
