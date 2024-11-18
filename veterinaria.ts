@@ -43,17 +43,17 @@ export class Veterinaria {
   }
 
   //METODO PARA MOSTRAR CLIENTES Y SUS MASCOTAS
-  public getCliente(): void {
-    this.clientes.forEach((cliente) => {
-      console.log("Cliente: " , cliente.getNombre());
-      const pacientes = cliente.get();
-      pacientes.forEach((paciente) => {
-        console.log(
-          `  Paciente: ${paciente.nomPaciente} - Especie: ${paciente.especie}`
-        );
-      });
-    });
-  }
+  //public getCliente(): void {
+    //this.clientes.forEach((cliente) => {
+     // console.log("Cliente: " , cliente.getNombre());
+     // const pacientes = cliente.get();
+      //pacientes.forEach((paciente) => {
+      //  console.log(
+       //   `  Paciente: ${paciente.getNombre()} - Especie: ${paciente.getEspecie()}`
+       // );
+     // });
+   // });
+ // }
 
   //METODO PARA BUSCAR CLIENTE POR ID
   public buscarClientePorId(id: number) {
