@@ -1,16 +1,19 @@
 import { Cliente } from "./cliente";
+import { Paciente } from "./paciente";
 
 export class Veterinaria {
   private id: number;
   protected nombre: string;
   protected direccion: string;
   protected clientes: Cliente[];
+  protected pacientes: Paciente[]; 
 
   constructor(nombre: string, direccion: string) {
     this.id = this.generarId(); //USO METODO GENERAR ID PARA GENERAR UN NUMERO RANDOM
     this.nombre = nombre;
     this.direccion = direccion;
     this.clientes = [];
+    this.pacientes = []; 
   }
 
   //METODO PARA GENERAR ID ALEATORIA
@@ -84,5 +87,19 @@ export class Veterinaria {
       console.log(`Cliente con id '${id}' no encontrado`);
     }
   }
+
+
+  //METODO PARA AGREGAR MASCOTA
+  public agregarMascota(mascotas: Paciente): void {
+    this.pacientes.push(mascotas);
+  }
+
+ 
+  //METODO PARA ELIMINAR MASCOTA
+  public bajaMascota(nomPaciente:string): void{
+    this.pacientes = this.pacientes.filter(mascotas => mascotas.getNombreMascota() !== nomPaciente); 
+  }
+
+
   
 }
