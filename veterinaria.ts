@@ -46,7 +46,7 @@ export class Veterinaria {
   public getCliente(): void {
     this.clientes.forEach((cliente) => {
       console.log("Cliente: " , cliente.getNombre());
-      const pacientes = cliente.getMascota();
+      const pacientes = cliente.get();
       pacientes.forEach((paciente) => {
         console.log(
           `  Paciente: ${paciente.nomPaciente} - Especie: ${paciente.especie}`
@@ -57,13 +57,13 @@ export class Veterinaria {
 
   //METODO PARA BUSCAR CLIENTE POR ID
   public buscarClientePorId(id: number) {
-    return this.clientes.find((clientes) => clientes.getIdCliente() === id);
+    return this.clientes.find((clientes) => clientes.getID() === id);
   }
 
   //METODO PARA ELIMINAR CLIENTE
   public bajaCliente(id: number): void {
     this.clientes = this.clientes.filter(
-      (clientes) => clientes.getIdCliente() !== id
+      (clientes) => clientes.getID() !== id
     );
   }
 
@@ -74,11 +74,11 @@ export class Veterinaria {
     nuevoTelefono?: number
   ): void {
     const cliente = this.clientes.find(
-      (cliente) => cliente.getIdCliente() === id
+      (cliente) => cliente.getID() === id
     );
     if (cliente) {
-      if (nuevoNombre) cliente.nomCliente = nuevoNombre;
-      if (nuevoTelefono) cliente.telefono = nuevoTelefono;
+      if (nuevoNombre) cliente.setNombre(nuevoNombre) ;
+      if (nuevoTelefono) cliente.setTelefono(nuevoTelefono);
       console.log(`Cliente con id '${id}' modificado`);
     } else {
       console.log(`Cliente con id '${id}' no encontrado`);
