@@ -1,7 +1,7 @@
 export class Paciente {
-  private nombre: string;
-  private especie: string;
-  private edad: number;
+  protected nombre: string;
+  protected  especie: string;
+  protected edad: number;
   protected esExotica: boolean=false;
   constructor(nombre: string, especie: string, edad: number) {
     this.nombre = nombre;
@@ -9,10 +9,10 @@ export class Paciente {
     this.edad = edad;
 
   }
-  public getNombre(): string {
+  public getNombreMascota(): string {
     return this.nombre;
   }
-  public setNombre(nombre: string) {
+  public setNombreMascota(nombre: string) {
     this.nombre = nombre;
   }
   public getEspecie(): string {
