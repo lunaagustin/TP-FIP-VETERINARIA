@@ -1,7 +1,7 @@
 export class Proveedor {
-    public nomProveedor: string;
-    public telefono: number;
-    public idProveedor: number;
+    protected nomProveedor: string;
+    protected telefono: number;
+    private idProveedor: number;
 
     constructor (nomProveedor:string, telefono:number){
         this.nomProveedor = nomProveedor;
