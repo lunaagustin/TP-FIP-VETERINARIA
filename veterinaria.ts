@@ -2,9 +2,9 @@ import { Cliente } from "./cliente";
 
 export class Veterinaria {
   private id: number;
-  private nombre: string;
-  private direccion: string;
-  private clientes: Cliente[];
+  protected nombre: string;
+  protected direccion: string;
+  protected clientes: Cliente[];
 
   constructor(nombre: string, direccion: string) {
     this.id = this.generarId(); //USO METODO GENERAR ID PARA GENERAR UN NUMERO RANDOM
