@@ -20,6 +20,10 @@ export class RedVeterinaria {
         this.nombre = nuevoNombre;
     }
 
+    public getVeterinarias():void{
+        console.log ("Las veterinarias son : ", this.veterinarias); 
+    }
+
     public AltaVeterinaria(veterinaria: Veterinaria): void {
         this.veterinarias.push(veterinaria);
     }
@@ -38,6 +42,10 @@ export class RedVeterinaria {
         } else {
             console.log(`Veterinaria con id '${id}' no encontrada.`);
         }
+    }
+
+    public mostrarProveedores(): void {
+        console.log ("Los proveedores son  : ", this.proveedores); 
     }
 
     public AltaProveedor(proveedor:Proveedor):void{
