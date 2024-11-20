@@ -1,12 +1,14 @@
-// import { RedVeterinaria } from "./redVeterinaria";
-// import { Veterinaria } from "./veterinaria";
-// import { Cliente } from "./cliente";
+import { RedVeterinaria } from "./redVeterinaria";
+import { Veterinaria } from "./veterinaria";
+import { Cliente } from "./cliente";
 // import { Paciente } from "./paciente";
-// import { Proveedor } from "./proveedor";
+import { Proveedor } from "./proveedor";
 
 
 //CREO UNA RED VETERINARIA
-// let redVeterinaria = new RedVeterinaria ("Red Veterinaria 1");
+let redVeterinaria = new RedVeterinaria ("Red Veterinaria 1");
+redVeterinaria.getNombre();
+console.log(redVeterinaria);
 
 //CREO VETERINARIAS
 // let vete1 = new Veterinaria ("Veterinaria Pelicano", "Pringles 3502");
@@ -37,7 +39,7 @@
 //*********************************************************************************************************************** */
 
 //MUESTRO LAS VETERINARIAS ok
-//redVeterinaria.getVeterinarias(); 
+// redVeterinaria.getVeterinarias(); 
 
 //MUESTRO LOS PROVEEDORES ok
 //redVeterinaria.mostrarProveedores(); 
