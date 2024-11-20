@@ -1,5 +1,6 @@
 import { Cliente } from "./cliente";
 import { Paciente } from "./paciente";
+import { Generador } from "./generadorId";
 
 export class Veterinaria {
   private id: number;
@@ -18,7 +19,9 @@ export class Veterinaria {
 
   //METODO PARA GENERAR ID ALEATORIA
   public generarId(): number {
-    return Math.floor(Math.random() * 300);
+    let idGenerado = new Generador();
+    let id = idGenerado.generadorIdUnico(); 
+    return id; 
   }
 
   public getId(): number {
@@ -45,16 +48,11 @@ export class Veterinaria {
     this.clientes.push(clientes);
   }
 
-  //METODO PARA MOSTRAR CLIENTES Y SUS MASCOTAS
-  public getCliente(): void {
-    this.clientes.forEach((cliente) => {
-      console.log("Cliente: " , cliente.getNombre());
-    
-      this.pacientes.forEach((paciente) => {
-        console.log(` Paciente: ${paciente.getNombreMascota()} - Especie: ${paciente.getEspecie()}`);
-      });
-    });
+  //AGREGO METODO PARA MOSTRAR CLIENTES ....
+  public muestroClientes(): void{
+    console.log("Los clientes son: ", this.clientes); 
   }
+
 
   //METODO PARA BUSCAR CLIENTE POR ID
   public buscarClientePorId(id: number) {
@@ -92,6 +90,29 @@ export class Veterinaria {
   public agregarMascota(mascotas: Paciente): void {
     this.pacientes.push(mascotas);
   }
+
+  //ASIGNAR PACIENTE A DUEÑO
+  public asignarPacienteADueño(paciente: Paciente, idDueño: number) {
+    let duenio = this.clientes.find(clientes => clientes.getID() === idDueño);
+    if (duenio) {
+      duenio.adoptarPaciente(paciente);
+      paciente.setIdPaciente(idDueño);
+    } else {
+      console.log('Dueño no encontrado');
+    }
+  }
+
+  //MOSTRAR CLIENTE Y SUS MASCOTAS
+  public clienteYmascotas( cliente: Cliente) {
+    console.log ("Cliente : ", cliente.getNombre());
+    console.log ("Mascotas: ", cliente.muestroMascotasAsignadas()); 
+  }
+
+  //AGREGO METODO PARA MOSTRAR MASCOTAS ....
+  public muestroMascotas(): void{
+    console.log("Las mascotas son: ", this.pacientes); 
+  }
+
 
   //METODO PARA ELIMINAR MASCOTA
   public bajaMascota(nomPaciente:string): void{
