@@ -1,14 +1,25 @@
 export class Paciente {
   protected nombre: string;
-  protected  especie: string;
+  protected especie: string;
   protected edad: number;
-  protected esExotica: boolean=false;
+  protected esExotica: boolean = false;
+  protected idPaciente: number = 0;  
+
   constructor(nombre: string, especie: string, edad: number) {
     this.nombre = nombre;
-    this.especie = especie;
+    this.especie = especie; 
+    this.setEspecie(especie);  
     this.edad = edad;
-
   }
+
+  public setIdPaciente(id:number){
+    this.idPaciente = id; 
+  }
+
+  public getIdPaciente():number{
+    return this.idPaciente; 
+  }
+
   public getNombreMascota(): string {
     return this.nombre;
   }
