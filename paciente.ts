@@ -9,9 +9,10 @@ export class Paciente {
   constructor(nombre: string, especie: string, edad: number) {
     this.nombre = nombre;
     this.especie = especie; 
-    this.setEspecie(especie); 
+
     this.edad = edad;
   }
+
 
   public setIdPaciente(id:number){
     this.idPaciente = id; 
