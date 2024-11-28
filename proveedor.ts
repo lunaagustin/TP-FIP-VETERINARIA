@@ -1,7 +1,9 @@
+import { Generador } from "./generadorId";
+
 export class Proveedor {
-    public nomProveedor: string;
-    public telefono: number;
-    public idProveedor: number;
+    protected nomProveedor: string;
+    protected telefono: number;
+    private idProveedor: number;
 
     constructor (nomProveedor:string, telefono:number){
         this.nomProveedor = nomProveedor;
@@ -11,7 +13,9 @@ export class Proveedor {
 
      //METODO PARA GENERAR ID ALEATORIA
     public generarId(): number {
-        return Math.floor(Math.random() * 300);
+        let idGenerado = new Generador();
+        let id = idGenerado.generadorIdUnico(); 
+        return id; 
     }
 
     public getId(): number{

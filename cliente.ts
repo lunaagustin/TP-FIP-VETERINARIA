@@ -1,10 +1,13 @@
+import { Paciente } from "./paciente";
+import { Generador } from "./generadorId";
+
 export class Cliente{
-    private nombre:string;
-    private telefono: number;
+    protected nombre:string;
+    protected telefono: number;
     private id: number;
     private esVIP: boolean;
     private acumulVisitas: number;
-    //atributo mascotas: Paciente[]
+    protected mascotas: Paciente[];
 
     constructor(nombre:string,telefono:number){
         this.nombre= nombre;
@@ -12,6 +15,7 @@ export class Cliente{
         this.id= this.setID();
         this.esVIP= false;
         this.acumulVisitas= 0;
+        this.mascotas= [];
     }
 
     public getNombre():string{
@@ -34,6 +38,14 @@ export class Cliente{
         return this.acumulVisitas;    
     }
 
+    public getListasMascotas():Paciente[]{
+        return this.mascotas;
+    }
+
+    public muestroMascotasAsignadas():Paciente[]{
+        return this.mascotas
+    }
+
     public setNombre(nombre:string):void{
         this.nombre= nombre;
     }
@@ -43,7 +55,9 @@ export class Cliente{
     }
 
     public setID():number{
-        return this.id= Math.floor(Math.random()*100);
+        let idGenerado = new Generador();
+        let id = idGenerado.generadorIdUnico(); 
+        return id;
     }
 
     public setVIP():void{
@@ -57,5 +71,13 @@ export class Cliente{
     
     public setAcumulVisitas(visitas:number):void{
         this.acumulVisitas += visitas;
+    }
+
+    public adoptarPaciente(paciente: Paciente) {
+        this.mascotas.push(paciente);
+    }
+
+    public verCantVisitas(){
+        console.log (`El cliente ${this.nombre} tiene un total de: ${this.acumulVisitas} visitas`); 
     }
 }
