@@ -1,6 +1,7 @@
 import { Cliente } from "./cliente";
 import { Paciente } from "./paciente";
 import { Generador } from "./generadorId";
+import * as readlineSync from "readline-sync";
 
 export class Veterinaria {
   private id: number;
@@ -48,10 +49,9 @@ export class Veterinaria {
     this.clientes.push(clientes);
   }
 
-  //AGREGO METODO PARA MOSTRAR CLIENTES ....
-  public muestroClientes(): void{
-    console.log("Los clientes son: ", this.clientes); 
-  }
+  public mostrarClientes(): void {
+    this.clientes.forEach(cliente => { console.log (`Cliente :  ${cliente.getNombre()} - Telefono :  ${cliente.getTelefono()} `)})
+   }
 
 
   //METODO PARA BUSCAR CLIENTE POR ID
@@ -61,10 +61,8 @@ export class Veterinaria {
 
 
   //METODO PARA ELIMINAR CLIENTE
-  public bajaCliente(id: number): void {
-    this.clientes = this.clientes.filter(
-      (clientes) => clientes.getID() !== id
-    );
+  public bajaCliente(nombre:string): void {
+    this.clientes = this.clientes.filter((clientes) => clientes.getNombre() !== nombre);
   }
 
   //METODO PARA MODIFICAR CLIENTE
@@ -131,5 +129,6 @@ export class Veterinaria {
         console.log(`Paciente con nombre '${nombre}}' no encontrado`);
       }
     }
+
 
 }
